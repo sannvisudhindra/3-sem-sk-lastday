@@ -1,0 +1,37 @@
+[
+  {
+    "id": "bk-1001",
+    "ticketCode": "ENC-78192-M9",
+    "event": {
+      "id": "ev-neon-nights",
+      "title": "Neon Nights: Electronic Symphony",
+      "eventType": "concert",
+      "posterUrl": null,
+      "posterDescription": "Vibrant glowing cyberpunk synthesizer waves",
+      "venue": {
+        "name": "Sabarmati Bowl",
+        "city": "Ahmedabad"
+      },
+      "startsAt": "2026-11-15T19:30:00Z",
+      "endsAt": "2026-11-15T22:30:00Z",
+      "seatingMode": "assigned",
+      "minPricePaise": 199900,
+      "availability": "fast"
+    },
+    "items": [
+      {
+        "label": "South Premium · Row A-5",
+        "qty": 1,
+        "unitPricePaise": 499900
+      },
+      {
+        "label": "South Premium · Row A-6",
+        "qty": 1,
+        "unitPricePaise": 499900
+      }
+    ],
+    "totalPaise": 999800,
+    "createdAt": "2026-10-28T10:15:00Z"
+  }
+]
+

@@ -1,0 +1,77 @@
+{
+  "id": "ev-neon-nights",
+  "title": "Neon Nights: Electronic Symphony",
+  "eventType": "concert",
+  "venue": {
+    "name": "Sabarmati Bowl",
+    "city": "Ahmedabad",
+    "imageUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
+    "instructions": "Gates open at 5:30 PM. Use North gate for Block A and South gate for Premium.",
+    "layout": {
+      "width": 1000,
+      "height": 600,
+      "stage": {
+        "x": 350,
+        "y": 40,
+        "w": 300,
+        "h": 50,
+        "label": "MAIN STAGE"
+      },
+      "sections": [
+        {
+          "code": "PREM",
+          "name": "South Premium",
+          "kind": "seated",
+          "color": "#14D3B5",
+          "shape": "grid",
+          "x": 300,
+          "y": 140,
+          "w": 400,
+          "h": 120,
+          "rows": 4,
+          "seatsPerRow": 12
+        },
+        {
+          "code": "BLKA",
+          "name": "Block A (East)",
+          "kind": "seated",
+          "color": "#FF5E62",
+          "shape": "arc",
+          "cx": 500,
+          "cy": 120,
+          "innerR": 260,
+          "outerR": 380,
+          "startDeg": 140,
+          "endDeg": 180,
+          "rows": 5,
+          "seatsPerRow": 10
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "id": "sec-prem",
+      "name": "South Premium",
+      "color": "#14D3B5",
+      "pricePaise": 499900,
+      "capacity": 48,
+      "available": 32
+    },
+    {
+      "id": "sec-blka",
+      "name": "Block A (East)",
+      "color": "#FF5E62",
+      "pricePaise": 199900,
+      "capacity": 50,
+      "available": 40
+    }
+  ],
+  "startsAt": "2026-11-15T19:30:00Z",
+  "endsAt": "2026-11-15T22:30:00Z",
+  "seatingMode": "assigned",
+  "minPricePaise": 199900,
+  "availability": "fast",
+  "myTicketCount": 0
+}
+

@@ -18,3 +18,17 @@ export function getSupabaseAdmin() {
   return supabaseAdmin;
 }
 
+/**
+ * Fresh client for password sign-in. Signing in on the shared admin client would store the
+ * user's session on it, and every later "admin" query would then run as that user instead of
+ * with the service-role key.
+ */
+export function createAuthClient() {
+  return createClient(config.supabase.url, config.supabase.anonKey || config.supabase.serviceRoleKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  });
+}
+

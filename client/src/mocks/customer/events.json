@@ -1,0 +1,51 @@
+[
+  {
+    "id": "ev-neon-nights",
+    "title": "Neon Nights: Electronic Symphony",
+    "eventType": "concert",
+    "posterUrl": null,
+    "posterDescription": "Vibrant glowing cyberpunk synthesizer waves",
+    "venue": {
+      "name": "Sabarmati Bowl",
+      "city": "Ahmedabad"
+    },
+    "startsAt": "2026-11-15T19:30:00Z",
+    "endsAt": "2026-11-15T22:30:00Z",
+    "seatingMode": "assigned",
+    "minPricePaise": 199900,
+    "availability": "fast"
+  },
+  {
+    "id": "ev-lakeside-live",
+    "title": "Lakeside Live 2026",
+    "eventType": "festival",
+    "posterUrl": null,
+    "posterDescription": "Sunset reflection on water with indie rock stage",
+    "venue": {
+      "name": "Lakeside Grounds",
+      "city": "Bengaluru"
+    },
+    "startsAt": "2026-12-05T17:00:00Z",
+    "endsAt": "2026-12-05T23:00:00Z",
+    "seatingMode": "sectioned",
+    "minPricePaise": 99900,
+    "availability": "available"
+  },
+  {
+    "id": "ev-open-mic",
+    "title": "Open Mic @ The Loft",
+    "eventType": "comedy",
+    "posterUrl": null,
+    "posterDescription": "Intimate spotlight on a vintage microphone",
+    "venue": {
+      "name": "The Loft",
+      "city": "Bengaluru"
+    },
+    "startsAt": "2026-11-02T20:00:00Z",
+    "endsAt": "2026-11-02T22:00:00Z",
+    "seatingMode": "free",
+    "minPricePaise": 49900,
+    "availability": "available"
+  }
+]
+

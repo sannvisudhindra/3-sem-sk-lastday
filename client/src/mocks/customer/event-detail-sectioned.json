@@ -1,0 +1,46 @@
+{
+  "id": "ev-lakeside-live",
+  "title": "Lakeside Live 2026",
+  "eventType": "festival",
+  "posterUrl": null,
+  "posterDescription": "Sunset reflection on water with indie rock stage",
+  "venue": {
+    "name": "Lakeside Grounds",
+    "city": "Bengaluru",
+    "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745",
+    "instructions": "Outdoor open-air festival. Re-entry allowed until 8 PM. Bring valid photo ID."
+  },
+  "sections": [
+    {
+      "id": "sec-vip-lounge",
+      "name": "VIP Lounge",
+      "color": "#B57EDC",
+      "pricePaise": 599900,
+      "capacity": 100,
+      "available": 45
+    },
+    {
+      "id": "sec-gold-standing",
+      "name": "Gold Standing",
+      "color": "#FFC24B",
+      "pricePaise": 249900,
+      "capacity": 600,
+      "available": 280
+    },
+    {
+      "id": "sec-silver-standing",
+      "name": "Silver Standing",
+      "color": "#ADB5BD",
+      "pricePaise": 99900,
+      "capacity": 1200,
+      "available": 850
+    }
+  ],
+  "startsAt": "2026-12-05T17:00:00Z",
+  "endsAt": "2026-12-05T23:00:00Z",
+  "seatingMode": "sectioned",
+  "minPricePaise": 99900,
+  "availability": "available",
+  "myTicketCount": 0
+}
+
