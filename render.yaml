@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: encore-api
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: cd server && npm ci
+    startCommand: cd server && npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: CLIENT_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: EMAIL_MODE
+        value: console
+      - key: HOLD_SECONDS
+        value: 180
+      - key: PAYMENT_SECONDS
+        value: 60
+      - key: MAX_TICKETS_PER_USER
+        value: 10
+      - key: MAX_PAYMENT_ATTEMPTS
+        value: 3
+      - key: MAX_OTP_ATTEMPTS
+        value: 3
+      - key: QUEUE_MAX_ACTIVE
+        value: 100
+      - key: QUEUE_ADMISSION_SECONDS
+        value: 300
+      - key: VENUE_TURNOVER_MINUTES
+        value: 180
+
