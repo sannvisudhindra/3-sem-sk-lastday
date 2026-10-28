@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+build/
+.vite/
+coverage/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Tests
+playwright-report/
+test-results/
+
+# Supabase local
+supabase/.temp/
+supabase/.branches/
+
+# Deploy tooling
+.vercel/
+.render/
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
