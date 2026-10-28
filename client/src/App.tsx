@@ -1,5 +1,5 @@
 // Router: every route from WORK_DISTRIBUTION §4.5. Owned by P4 — P3 only fills in page files.
-import type { ReactNode } from 'react'
+import { lazy, Suspense, type ReactNode } from 'react'
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import AppShell from '@/layouts/AppShell'
 import { useAuth } from '@/lib/auth'
@@ -21,6 +21,9 @@ import HostEventPage from '@/pages/organiser/HostEventPage'
 import MyEventsPage from '@/pages/organiser/MyEventsPage'
 import VenueDetailPage from '@/pages/organiser/VenueDetailPage'
 import VenuesPage from '@/pages/organiser/VenuesPage'
+
+// Design-system gallery, dev builds only (tree-shaken from production).
+const UiShowcasePage = import.meta.env.DEV ? lazy(() => import('@/pages/dev/UiShowcasePage')) : null
 
 const HOME: Record<Role, string> = { customer: '/events', organiser: '/organiser/venues' }
 
@@ -76,6 +79,16 @@ export default function App() {
         <Route path="/onboarding/role" element={<RequireAuth><RoleOnboardingPage /></RequireAuth>} />
         {/* Public: opened from the QR code / email link, possibly on another device */}
         <Route path="/pay/:token" element={<MockPayPage />} />
+        {UiShowcasePage && (
+          <Route
+            path="/dev/ui"
+            element={
+              <Suspense fallback={<FullScreenLoader />}>
+                <UiShowcasePage />
+              </Suspense>
+            }
+          />
+        )}
 
         <Route element={<AppShell />}>
           <Route element={<RequireRole role="customer" />}>

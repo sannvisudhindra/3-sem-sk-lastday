@@ -43,7 +43,7 @@
   --color-primary-to: var(--primary-to);
   --color-secondary-from: var(--secondary-from);
   --color-secondary-to: var(--secondary-to);
-  --color-accent: var(--accent);
+  --color-gold: var(--accent); /* gold highlight → text-gold, bg-gold */
   --color-success: var(--success);
   --color-danger: var(--danger);
   --color-warning: var(--warning);
@@ -53,4 +53,18 @@
   --color-tint-rose: var(--tint-rose);
   --color-tint-sky: var(--tint-sky);
   --color-tint-lime: var(--tint-lime);
+
+  /* shadcn / Kokonut names, mapped onto our palette (used by components/ui and components/kokonutui) */
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-primary: var(--primary-from);
+  --color-primary-foreground: #1a0f0a;
+  --color-secondary: var(--glass);
+  --color-secondary-foreground: var(--text);
+  --color-accent: rgba(255, 255, 255, 0.08);
+  --color-accent-foreground: var(--text);
+  --color-destructive: var(--danger);
+  --color-border: var(--glass-border);
+  --color-input: var(--glass-border);
+  --color-ring: var(--primary-from);
 }
