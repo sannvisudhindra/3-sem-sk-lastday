@@ -1,6 +1,6 @@
 import express from 'express';
 import { z } from 'zod';
-import { getSupabaseAdmin } from '../services/supabaseAdmin.js';
+import { createAuthClient, getSupabaseAdmin } from '../services/supabaseAdmin.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { validate } from '../middleware/validate.js';
 import { authLimiter } from '../middleware/rateLimiters.js';
@@ -85,8 +85,8 @@ router.post('/username-login', authLimiter, validate(loginSchema), async (req, r
       email = profile.email;
     }
 
-    // Sign in with password
-    const { data, error } = await supabase.auth.signInWithPassword({
+    // Sign in with password on a throwaway client (keeps the admin client on the service-role key)
+    const { data, error } = await createAuthClient().auth.signInWithPassword({
       email,
       password,
     });

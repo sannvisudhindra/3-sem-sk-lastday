@@ -22,9 +22,10 @@ export interface VenueSectionLayout {
 }
 
 export interface VenueLayout {
-  width: number;
-  height: number;
-  stage: { x: number; y: number; w: number; h: number; label?: string };
+  width?: number;
+  height?: number;
+  viewBox?: string; // e.g. "0 0 1000 800" (PRD §5.3 format)
+  stage?: { x?: number; y?: number; w?: number; h?: number; label?: string };
   sections: VenueSectionLayout[];
 }
 

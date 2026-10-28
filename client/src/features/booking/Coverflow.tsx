@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { formatINR, formatIST } from './format.ts';
 import type { EventSummary } from './types.ts';

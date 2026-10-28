@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabase';
 import type { VenueLayout, SeatItem, EventSection } from './types.ts';
 import { formatINR } from './format.ts';
 
@@ -19,15 +20,15 @@ export default function SeatMap({
   sections = [],
   selected = [],
   onToggleSeat,
-  readOnly = false,
-  highlightBooked = false
+  readOnly = false
+  // highlightBooked: booked seats are always shown dimmed
 }: SeatMapProps) {
   const [hoveredSeat, setHoveredSeat] = useState<SeatItem | null>(null);
 
   // Realtime subscription hook (Rule T-06 / PRD §8.3): listens to event_seats updates live
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window === 'undefined') return;
-    const sb = (window as any).supabase;
+    const sb = supabase;
     if (!sb) return;
 
     const channel = sb
@@ -51,8 +52,9 @@ export default function SeatMap({
     };
   }, [selected, onToggleSeat]);
 
-  const width = layout?.width || 1000;
-  const height = layout?.height || 600;
+  const [, , vbW, vbH] = (layout?.viewBox ?? '').split(' ').map(Number);
+  const width = layout?.width || vbW || 1000;
+  const height = layout?.height || vbH || 600;
 
   const getSeatColor = (seat: SeatItem) => {
     if (selected.includes(seat.id)) return '#FFFFFF'; // White fill

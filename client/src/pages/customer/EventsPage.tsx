@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Coverflow from '../../features/booking/Coverflow.tsx';
 import { fetchEvents, joinQueue } from '../../features/booking/api.ts';

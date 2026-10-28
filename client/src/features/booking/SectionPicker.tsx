@@ -1,4 +1,3 @@
-import React from 'react';
 import type { EventSection } from './types.ts';
 import { formatINR } from './format.ts';
 import { Minus, Plus } from 'lucide-react';

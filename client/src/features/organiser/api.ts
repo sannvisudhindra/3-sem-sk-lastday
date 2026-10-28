@@ -22,6 +22,62 @@ import {
 } from '@/mocks/organiser/data'
 
 const TURNOVER_MS = 60 * 60 * 1000 // VENUE_TURNOVER_MINUTES default
+
+// ---------- Server → client shape adapters ----------
+// The API returns some rows straight from Postgres (snake_case, flat attempt counts).
+// These accept either shape so pages always get the types in lib/types.ts.
+type Raw = Record<string, any>
+const num = (...vals: unknown[]) => Number(vals.find((v) => v !== undefined && v !== null) ?? 0)
+
+function toStats(raw: Raw, eventId: string): EventStats {
+  const sections = (raw.sections ?? []).map((s: Raw) => ({
+    sectionId: s.sectionId ?? s.section_id ?? s.event_section_id ?? s.id,
+    name: s.name ?? s.section_name ?? 'Section',
+    pricePaise: num(s.pricePaise, s.price_paise),
+    capacity: num(s.capacity),
+    sold: num(s.sold),
+    heldNow: num(s.heldNow, s.held_now),
+    available: num(s.available),
+    revenuePaise: num(s.revenuePaise, s.revenue_paise),
+  }))
+  return {
+    eventId: raw.eventId ?? raw.event_id ?? eventId,
+    capacity: num(raw.capacity),
+    sold: num(raw.sold),
+    heldNow: num(raw.heldNow, raw.held_now),
+    available: num(raw.available),
+    revenuePaise: num(raw.revenuePaise, raw.revenue_paise),
+    bookings: num(raw.bookings),
+    attempts: {
+      succeeded: num(raw.attempts?.succeeded, raw.attempts_succeeded),
+      failed: num(raw.attempts?.failed, raw.attempts_failed),
+      expired: num(raw.attempts?.expired, raw.attempts_expired),
+    },
+    sections,
+  }
+}
+
+function toVenue(raw: Raw): Venue {
+  return {
+    id: raw.id,
+    name: raw.name,
+    city: raw.city,
+    address: raw.address ?? undefined,
+    venueType: raw.venueType ?? raw.venue_type,
+    capacity: num(raw.capacity),
+    imageUrl: raw.imageUrl ?? raw.image_url ?? null,
+    instructions: raw.instructions ?? '',
+    layout: raw.layout ?? null,
+    sections: (raw.sections ?? []).map((s: Raw) => ({
+      id: s.id,
+      code: s.code ?? '',
+      name: s.name,
+      kind: s.kind ?? 'seated',
+      capacity: num(s.capacity),
+      color: s.color ?? '#9BA1B8',
+    })),
+  }
+}
 const delay = <T,>(v: T, ms = 350) => new Promise<T>((r) => setTimeout(() => r(v), ms))
 const notFound = () => new ApiError(404, 'NOT_FOUND', 'Not found')
 
@@ -53,12 +109,13 @@ function findMock(id: string) {
 }
 
 export const organiserApi = {
-  venues(): Promise<Venue[]> {
-    return USE_MOCKS ? delay(VENUES) : api.get('/venues')
+  async venues(): Promise<Venue[]> {
+    if (USE_MOCKS) return delay(VENUES)
+    return (await api.get<Raw[]>('/venues')).map(toVenue)
   },
 
   async venue(id: string): Promise<Venue> {
-    if (!USE_MOCKS) return api.get(`/venues/${id}`)
+    if (!USE_MOCKS) return toVenue(await api.get<Raw>(`/venues/${id}`))
     const v = VENUES.find((x) => x.id === id)
     if (!v) throw notFound()
     return delay(v)
@@ -116,7 +173,8 @@ export const organiserApi = {
   },
 
   async stats(id: string): Promise<EventStats> {
-    return USE_MOCKS ? delay(mockStats(findMock(id))) : api.get(`/organiser/events/${id}/stats`)
+    if (USE_MOCKS) return delay(mockStats(findMock(id)))
+    return toStats(await api.get<Raw>(`/organiser/events/${id}/stats`), id)
   },
 
   async bookings(id: string): Promise<OrganiserBooking[]> {

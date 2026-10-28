@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { approvePaymentLink } from '../../features/booking/api.ts';
 import { Shield, CheckCircle } from 'lucide-react';

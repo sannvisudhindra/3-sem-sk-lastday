@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { checkQueueStatus } from '../../features/booking/api.ts';
 import { Users, Clock } from 'lucide-react';

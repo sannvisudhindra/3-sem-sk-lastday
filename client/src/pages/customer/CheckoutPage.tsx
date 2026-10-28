@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import { useActiveHold, setActiveHold } from '../../features/booking/holdStore.ts';
@@ -20,7 +20,7 @@ export default function CheckoutPage() {
 
   // Net banking state
   const [selectedBank, setSelectedBank] = useState('Bank of Bengaluru');
-  const [otpSent, setOtpSent] = useState(false);
+  const [, setOtpSent] = useState(false);
   const [otpDigits, setOtpDigits] = useState(['', '', '', '', '', '']);
   const [otpAttemptsLeft, setOtpAttemptsLeft] = useState(3);
   const [isVerifying, setIsVerifying] = useState(false);
