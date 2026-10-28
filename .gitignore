@@ -34,3 +34,8 @@ supabase/.branches/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Stray root files (OneDrive keeps restoring them). Real packages live in client/, server/, tests/
+/package.json
+/package-lock.json
+/Waste
