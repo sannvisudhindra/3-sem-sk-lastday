@@ -252,3 +252,4 @@ router.get('/events/:id/payments', async (req, res, next) => {
 });
 
 export default router;
+

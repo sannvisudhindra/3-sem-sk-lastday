@@ -36,3 +36,4 @@ router.get('/:entryId', requireAuth, async (req, res, next) => {
 });
 
 export default router;
+

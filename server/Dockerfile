@@ -16,3 +16,4 @@ EXPOSE 8080
 
 # Run server
 CMD ["node", "src/index.js"]
+

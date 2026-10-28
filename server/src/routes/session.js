@@ -39,3 +39,4 @@ router.post('/claim', requireAuth, validate(claimSchema), async (req, res, next)
 });
 
 export default router;
+
