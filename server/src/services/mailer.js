@@ -120,3 +120,4 @@ export async function sendTicketEmail({ to, booking }) {
   `;
   return sendMail({ to, subject, text, html });
 }
+
