@@ -80,3 +80,4 @@ assert(calculatedPaise === b.totalPaise, `Total paise (${b.totalPaise}) does not
 console.log('✅ bookings.json: Ticket code format, QR payload & price integrity verified.');
 
 console.log('\n🎉 ALL STEP 1 FIXTURE CONTRACT CHECKS PASSED SUCCESSFULLY!\n');
+

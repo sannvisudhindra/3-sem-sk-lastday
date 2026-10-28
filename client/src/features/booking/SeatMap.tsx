@@ -24,6 +24,33 @@ export default function SeatMap({
 }: SeatMapProps) {
   const [hoveredSeat, setHoveredSeat] = useState<SeatItem | null>(null);
 
+  // Realtime subscription hook (Rule T-06 / PRD §8.3): listens to event_seats updates live
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const sb = (window as any).supabase;
+    if (!sb) return;
+
+    const channel = sb
+      .channel('realtime-event-seats')
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'event_seats' },
+        (payload: any) => {
+          if (payload.new && onToggleSeat && payload.new.status !== 'available') {
+            // Deselect seat if taken by someone else
+            if (selected.includes(payload.new.id)) {
+              onToggleSeat(payload.new.id);
+            }
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      sb.removeChannel(channel);
+    };
+  }, [selected, onToggleSeat]);
+
   const width = layout?.width || 1000;
   const height = layout?.height || 600;
 
