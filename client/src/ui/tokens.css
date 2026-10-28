@@ -1,0 +1,56 @@
+/* "Midnight Aurora" design tokens — PRD §8.1. Single source for colours, radii and fonts. */
+:root {
+  --bg: #07080f;
+  --bg-elev: #0e1020;
+  --glass: rgba(255, 255, 255, 0.045);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --text: #f5f6fa;
+  --text-muted: #9ba1b8;
+  --primary-from: #ff5e62;
+  --primary-to: #ff9f43;
+  --secondary-from: #14d3b5;
+  --secondary-to: #3b82f6;
+  --accent: #ffd166;
+  --success: #22c55e;
+  --danger: #f43f5e;
+  --warning: #f59e0b;
+
+  --tint-coral: #ff6b6b;
+  --tint-teal: #2dd4bf;
+  --tint-amber: #fbbf24;
+  --tint-rose: #fb7185;
+  --tint-sky: #38bdf8;
+  --tint-lime: #a3e635;
+}
+
+/* Radii + fonts: defined once here, emitted as CSS vars and Tailwind utilities (rounded-lg, font-display). */
+@theme {
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --font-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Expose tokens to Tailwind utilities: bg-bg, text-muted, from-primary-from, rounded-lg … */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-primary-from: var(--primary-from);
+  --color-primary-to: var(--primary-to);
+  --color-secondary-from: var(--secondary-from);
+  --color-secondary-to: var(--secondary-to);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-tint-coral: var(--tint-coral);
+  --color-tint-teal: var(--tint-teal);
+  --color-tint-amber: var(--tint-amber);
+  --color-tint-rose: var(--tint-rose);
+  --color-tint-sky: var(--tint-sky);
+  --color-tint-lime: var(--tint-lime);
+}
