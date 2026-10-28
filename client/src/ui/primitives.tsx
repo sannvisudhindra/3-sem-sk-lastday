@@ -294,7 +294,7 @@ export function Tabs<T extends string>({
             aria-selected={active}
             onClick={() => onChange(t.value)}
             className={cn(
-              'relative flex-1 rounded-[10px] px-4 py-1.5 text-sm font-medium transition-colors',
+              'relative flex-1 whitespace-nowrap rounded-[10px] px-4 py-1.5 text-sm font-medium transition-colors',
               active ? 'text-text' : 'text-muted hover:text-text',
             )}
           >
