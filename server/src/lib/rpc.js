@@ -53,3 +53,4 @@ export async function callRpc(fnName, args = {}) {
 
   return data;
 }
+
