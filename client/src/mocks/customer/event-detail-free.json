@@ -1,0 +1,29 @@
+{
+  "id": "ev-open-mic",
+  "title": "Open Mic @ The Loft",
+  "eventType": "comedy",
+  "posterUrl": null,
+  "posterDescription": "Intimate spotlight on a vintage microphone",
+  "venue": {
+    "name": "The Loft",
+    "city": "Bengaluru",
+    "imageUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7",
+    "instructions": "Seating is first-come first-served. Doors open 30 minutes before showtime."
+  },
+  "sections": [
+    {
+      "id": "sec-loft-ga",
+      "name": "General Admission",
+      "color": "#14D3B5",
+      "pricePaise": 49900,
+      "capacity": 150,
+      "available": 84
+    }
+  ],
+  "startsAt": "2026-11-02T20:00:00Z",
+  "endsAt": "2026-11-02T22:00:00Z",
+  "seatingMode": "free",
+  "minPricePaise": 49900,
+  "availability": "available",
+  "myTicketCount": 0
+}
